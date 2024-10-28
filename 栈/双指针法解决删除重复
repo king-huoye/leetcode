@@ -1,0 +1,13 @@
+class Solution:
+    def removeDuplicates(self, s: str) -> str:
+        result=list(s)
+        slow=fast=0
+        L=len(result)
+        while fast<L:
+            result[slow]=result[fast]
+            if slow>0 and result[slow]==result[slow-1]:
+                slow-=1
+            else:
+                slow+=1
+            fast+=1
+        return ''.join(result[:slow])
