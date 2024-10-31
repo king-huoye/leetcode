@@ -1,0 +1,20 @@
+class Solution:
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        if target not in nums:
+            return [-1,-1]
+        # 要搜寻左右边界
+        def binary(arr,tar):
+            left=0
+            right=len(arr)-1
+            while left<=right:
+                middle=(int)((left+right)/2) 
+                if arr[middle]<tar:
+                    left=middle+1
+                elif arr[middle]>=tar:
+                    right=middle-1
+            return left
+        leftboarder=binary(nums,target)
+        rightboarder=binary(nums,target+1)-1
+        if leftboarder==len(nums) or nums[leftboarder]!=target:
+            return [-1,-1]
+        return [leftboarder,rightboarder]     
