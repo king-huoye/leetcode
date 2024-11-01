@@ -29,7 +29,7 @@ class Solution:
             start_x += 1
             start_y += 1
         if n%2==1:
-            nums[middle][middle]=count
+            nums[middle][middle]=count #最后处理中间部分的，奇数部分
 
         return nums
 so=Solution()
