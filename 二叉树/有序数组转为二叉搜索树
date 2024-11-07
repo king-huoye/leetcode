@@ -1,0 +1,19 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def sortedArrayToBST(self, nums: List[int]) -> Optional[TreeNode]:
+        def travel(nums,left,right):
+            if not nums:
+                return None
+            if left>right:
+                return None
+            middle=(int)((left+right)/2)#类似二分法，确定分界点
+            root=TreeNode(nums[middle])
+            root.left=travel(nums,left,middle-1)
+            root.right=travel(nums,middle+1,right)
+            return root
+        return travel(nums,0,len(nums)-1)
