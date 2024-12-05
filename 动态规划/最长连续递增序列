@@ -1,0 +1,24 @@
+class Solution:
+    def findLengthOfLCIS(self, nums: List[int]) -> int:
+        if not nums:
+            return 0
+        n=len(nums)
+        dp=[1]*n
+        for i in range(1,n):
+            if nums[i]>nums[i-1]:
+                dp[i]=max(dp[i],dp[i-1]+1)
+        return max(dp)
+##贪心
+class Solution:
+    def findLengthOfLCIS(self, nums: List[int]) -> int:
+        if len(nums) == 0:
+            return 0
+        result = 1 #连续子序列最少也是1
+        count = 1
+        for i in range(len(nums)-1):
+            if nums[i+1] > nums[i]: #连续记录
+                count += 1
+            else: #不连续，count从头开始
+                count = 1
+            result = max(result, count)
+        return result
