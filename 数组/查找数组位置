@@ -13,6 +13,7 @@ class Solution:
                 elif arr[middle]>=tar:
                     right=middle-1
             return left
+#可以同一个数字不影响的比如可以返回[0,0],需要的是找到左右边界,如果左边界超出了或者左边界不等于目标值就返回[-1,-1]
         leftboarder=binary(nums,target)
         rightboarder=binary(nums,target+1)-1
         if leftboarder==len(nums) or nums[leftboarder]!=target:
